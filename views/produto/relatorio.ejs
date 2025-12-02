@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório dos produtos</title>
+</head>
+<body>
+
+    <%- include("../partials/cabecalho.ejs") %>
+
+    <div class="container">
+        <% if (produtos) { %>
+
+            <table class="table table-striped">
+                <thead>
+                    
+                        <th>Nome</th>
+                        <th>Marca do produto</th>
+                        <th>Quantidade do produto</th>
+                        <th>Cod. do produto</th>
+                        <th>Detalhar</th>
+                        <th>Atualizar</th>
+                        <th>Excluir</th>
+                    
+                </thead>
+
+                <% produtos.forEach(produto => { %>
+                    <tr class="table-success">
+                        <td><%= produto.nome %></td>
+                        <td><%= produto.marca%></td>
+                        <td><%= produto.qproduto %></td>
+                        <td><%= produto.codp %></td>
+                        <td><a href="/produtos/<%= produto.nome %>" class="btn btn-info"> Detalhar</a></td>
+                        <td><a href="#" class="btn btn-warning"> Atualizar</a></td>
+                        <td><a href="/produtos/excluir/<%= produto.codp%>" class="btn btn-danger" onclick="return confirm('Deseja excluir?')">Deletar</a></td>
+                        </tr>
+                        <%}) %>
+            </table>
+            
+            
+        
+            <%} else{ %>
+                <h2 style="color: red;"> produto NÃO cadastrado!
+                    <%} %>
+
+                    
+                <% if (status ==1 ) { %>
+                    <div class="alert alert-success">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        Cadastrado com sucesso.
+                        
+                    
+                    </div>
+                    
+                <%} %>
+                <a href="/" class="btn btn-primary"> Voltar</a>
+    </div>
+
+          <%- include("../partials/rodape.ejs") %>
+</body>
+</html>

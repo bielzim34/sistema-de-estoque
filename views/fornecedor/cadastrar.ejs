@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de cadastro</title>
+</head>
+<body>
+    <%- include("../partials/cabecalho.ejs") %>
+    <div class="container">
+    <b> <h2><%= fornecedor._id ? "Atualizar" : "Cadastrar" %> Fornecedor</h2> </b>
+
+    <form action=" <%= fornecedor._id ? "/fornecedores/atualizar" : "/fornecedores" %>" method="post">
+        <input type="hidden" name="_id" value="<%= fornecedor._id %>">
+
+            <label class="form-label">Nome:</label>
+            <input value="<%= fornecedor.nome %>"  class="form-control" type="text" name="nome" required>
+            <div></div>
+
+            <label class="form-label">Endereço da empresa do fornecedor:</label>
+            <input value="<%= fornecedor.endereço %>" class="form-control" type="text" name="endereço" required>
+            <div></div>
+
+            <label class="form-label">Codigo do fornecedor:</label>
+            <input value="<%= fornecedor.codf %>" class="form-control" type="number" name="codf" required>
+
+            <button type="submit" href="/relatorio.ejs" class="btn btn-success"> <%= fornecedor._id ? "Atualizar" : "Cadastrar" %> </button>
+            <a href="/" class="btn btn-primary"> Voltar </a>
+
+    </form>
+
+</div>
+    <%- include("../partials/rodape.ejs") %>
+    
+</body>
+</html>

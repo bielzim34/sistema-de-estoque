@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de cadastro</title>
+</head>
+<body>
+    <%- include("../partials/cabecalho.ejs") %>
+    <div class="container">
+    <b> <h2> <%= produto._id ? "atualizar" : "Cadastrar" %> Produtos</h2> </b>
+
+    <form action=" <%= produto._d ?" /produtos/atualizar" : "/produtos" %>" method="post">
+        <input type="hidden" name="_id" value="<%=produto._id %>">
+
+
+            <label class="form-label">Nome do produto:</label>
+            <input value="<%= produto.nome %>" class="form-control" type="text" name="nome" required>
+            <div></div>
+
+            <label class="form-label">Marca do produto:</label>
+            <input value="<%= produto.marca %>" class="form-control" type="text" name="marca" required>
+        
+            <div></div>
+            
+        <div class="row">
+            <div class="col">
+                <label class="form-label">Quantidade do Produto:</label>
+                <input value="<%= produto.qproduto %>" class="form-control" type="number" name="qproduto" required>
+            </div>
+            
+            <div class="col">
+                <label class="form-label">Código do Produto:</label>
+                <input value="<%= produto.codp %>" class="form-control" type="number" name="codp" required>
+            </div>
+        </div>
+
+            <button type="submit" href="/relatorio.ejs" class="btn btn-success"> Cadastrar </button>
+            <a href="/" class="btn btn-primary"> Voltar </a>
+
+    </form>
+
+</div>
+    <%- include("../partials/rodape.ejs") %>
+    
+</body>
+</html>

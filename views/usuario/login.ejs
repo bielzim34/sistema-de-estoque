@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de cadastro</title>
+</head>
+<body>
+    <%- include("../partials/cabecalhoSemMenu.ejs") %>
+    <div class="container">
+
+
+
+                <% if (status== "1" ) { %>
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        EMAIL OU SENHA INCORRETOS.
+                <%} %>
+
+               
+    </div>
+
+    <b> <h2>Login Usuario</h2> </b>
+
+    <form action="/usuarios/login" method="post">
+
+        <div>
+            <label class="form-label">Endereço E-mail:</label>
+            <input  class="form-control" type="email" name="email" required>
+        </div>
+
+        <div>
+            <label class="form-label">senha:</label>
+            <input  class="form-control" type="password" name="senha" required>
+        </div>
+        
+            <button type="submit" href="/usuarios/relatorio.ejs" class="btn btn-success"> Logar </button>
+            <button type="submit" href="/usuarios/cadastrar.ejs" class="btn btn-success"> Cadastrar </button>
+
+    </form>
+
+</div>
+    <%- include("../partials/rodape.ejs") %>
+    
+</body>
+</html>

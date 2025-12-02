@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório dos fornecedores</title>
+</head>
+<body>
+
+    <%- include("../partials/cabecalho.ejs") %>
+
+    <div class="container">
+        <% if (fornecedores) { %>
+
+            <table class="table table-striped">
+                <thead>
+                    
+                        <th>Nome</th>
+                        <th>Endereço do fornecedor</th>
+                        <th>Cod. do fornecedor</th>
+                        <th>Detalhar</th>
+                        <th>Atualizar</th>
+                        <th>Excluir</th>
+                    
+                </thead>
+
+                <% fornecedores.forEach(fornecedor => { %>
+                    <tr class="table-info">
+                        <td><%= fornecedor.nome %></td>
+                        <td><%= fornecedor.endereço%></td>
+                        <td><%= fornecedor.codf %></td>
+                        <td><a href="/fornecedores/<%= fornecedor.nome %>" class="btn btn-info"> Detalhar</a></td>
+                        <td><a href="/fornecedores/atualizar/<%= fornecedor.codf%>" class="btn btn-warning"> Atualizar</a></td>
+                        <td><a href="/fornecedores/excluir/<%= fornecedor.codf%>" class="btn btn-danger" onclick="return confirm('Deseja excluir?')">Deletar</a></td>
+                        </tr>
+
+                        <%}) %>
+            </table>
+            
+            
+        
+            <%} else{ %>
+                <h2 style="color: red;"> Fornecedor NÃO cadastrado!
+                    <%} %>
+
+                    
+                <% if (status ==1 ) { %>
+                    <div class="alert alert-success">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        Cadastrado com sucesso.
+                        
+                    
+                    </div>
+                    
+                <%} %>
+
+                <% if (status==2 ) { %>
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        REMOVIDO COM SUCESSO.
+                <%} %>
+
+                <a href="/" class="btn btn-primary"> Voltar</a>
+    </div>
+
+          <%- include("../partials/rodape.ejs") %>
+</body>
+</html>

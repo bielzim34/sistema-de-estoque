@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de cadastro</title>
+</head>
+<body>
+    <%- include("../partials/cabecalhoSemMenu.ejs") %>
+    <div class="container">
+    <b> <h2><%= usuario._id ? "Atualizar" : "Cadastrar" %> Usuario</h2> </b>
+
+    <form action=" <%= usuario._id ? "/usuarios/atualizar" : "/usuarios" %>" method="post">
+        <input type="hidden" name="_id" value="<%= usuario._id %>">
+
+            <label class="form-label">Nome:</label>
+            <input value="<%= usuario.nome %>"  class="form-control" type="text" name="nome" required>
+            <div></div>
+
+            <label class="form-label">Endereço E-mail:</label>
+            <input value="<%= usuario.email %>" class="form-control" type="text" name="email" required>
+            <div></div>
+
+            <label class="form-label">senha:</label>
+            <input  class="form-control" type="password" name="senha" required>
+
+            <button type="submit"  class="btn btn-success"> Cadastrar </button>
+            <a class="btn btn-primary" href="/usuarios/login"> Já possui conta? </a>
+
+    </form>
+
+</div>
+    <%- include("../partials/rodape.ejs") %>
+    
+</body>
+</html>
