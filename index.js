@@ -1,4 +1,5 @@
 const session = require("express-session");
+require('dotenv/config');
 
 const express = require ('express')
 const app = express();
@@ -13,8 +14,9 @@ app.use(session({
     resave: false
      }));
 
-const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://eglms_db_user:1c4qKdl0NpE4VQsU@cluster0.yobunds.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+//const mongoose = require("mongoose");
+//mongoose.connect("mongodb+srv://eglms_db_user:1c4qKdl0NpE4VQsU@cluster0.yobunds.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(process.env.MONGO_URI);
 
 const fornecedorRouter = require("./routes/fonecedorRoutes");
 app.use(fornecedorRouter);
@@ -39,6 +41,6 @@ app.get("/", function(req, res) {
         res.status(404).render("404");
     });
 
-app.listen("999", function(){
+app.listen(process.env.PORT, function(){
     console.log("Rodando...");
 });
