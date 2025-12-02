@@ -14,8 +14,7 @@ app.use(session({
     resave: false
      }));
 
-//const mongoose = require("mongoose");
-//mongoose.connect("mongodb+srv://eglms_db_user:1c4qKdl0NpE4VQsU@cluster0.yobunds.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URI);
 
 const fornecedorRouter = require("./routes/fonecedorRoutes");
