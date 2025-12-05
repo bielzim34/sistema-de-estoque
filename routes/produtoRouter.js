@@ -1,6 +1,5 @@
-const express = require("express");
+const express = require('express');
 const routes = express.Router();
-
 const produtoController = require("../controllers/produtoController");
 
 routes.get("/produtos/cadastrar",produtoController.cadastrarget);

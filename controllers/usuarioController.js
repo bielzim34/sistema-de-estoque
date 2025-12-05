@@ -58,12 +58,6 @@ class usuarioController{
         res.render("usuario/cadastrar", {usuario});
     };
 
-    static logout(req, res){
-        req.session.usuario = null;
-        res.redirect("/usuarios/login");
-    }
-
-
     static async loginpost(req, res){
         const usuario = await Usuario.findOne({email: req.body.email});
         if (usuario != null){
@@ -85,6 +79,11 @@ class usuarioController{
     static loginget(req, res){
         const status = req.query.s;
         res.render("usuario/login",{status});
+    };
+
+    static async logout(req, res){
+        req.session.usuario = null;
+        res.redirect("/usuarios/login")
     };
 
 }
